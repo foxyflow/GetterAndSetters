@@ -10,10 +10,11 @@ namespace GetSet2019
     {
         static void Main(string[] args)
         {
-           // DateTime currentTime = DateTime.Now;
-           // Console.WriteLine(currentTime);
-            //Console.ReadKey();
-            CreditCard l = new CreditCard();
+            DateTime currentTime = DateTime.Now;
+            Console.WriteLine(currentTime);
+            Console.ReadKey();
+
+            
 
             Console.WriteLine("Enter your public name on card");
             string cardName = Console.ReadLine();
@@ -25,20 +26,25 @@ namespace GetSet2019
             string expiryDate = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine($"Name on card {c.CardName}");
-            Console.WriteLine($"Private account Number:{c.CardNo}");
-            Console.WriteLine($"private pin number {c.PinNo}");
-            Console.WriteLine($"public expiry date {c.ExpiryDate}");
+            CreditCard cc = new CreditCard(cardName, cardNo, pinNo, expiryDate);
+            /*
+            Console.WriteLine($"Name on card {cc.CardName}");
+           // Console.WriteLine($"Private account Number:{cc.CardNo}");
+           // Console.WriteLine($"private pin number {cc.PinNo}");
+            Console.WriteLine($"public expiry date {cc.ExpiryDate}");
+            */
+            Console.WriteLine(cc.DisplayPrivate());
 
-            
+            Console.WriteLine("Application finished");
+            Console.ReadLine();           
         }
     }
     class CreditCard
     {
 
         //Attributes 
-        public string cardName;
-        public string expiryDate;
+        private string cardName;
+        private string expiryDate;
         private int cardNo;
         private int pinNo;
 
@@ -73,10 +79,17 @@ namespace GetSet2019
             CardNo = _cardNo;
             PinNo = _pinNo;
             ExpiryDate = _expiryDate;
-            Console.WriteLine("New Person Object Created");
+            Console.WriteLine("New Credit Card Object Created");          
+        }
+        public string DisplayPrivate()
+        {
+            return $"Private CardNumber: {CardNo}\n  Private PinNumber: {PinNo}\n Public CardName {CardName}\n Public expiry date {ExpiryDate}";
 
-            
-            
+
+        }
+        public CreditCard()
+        {
+            Console.WriteLine("New Credit Card Object Created");
         }
     }
 }
